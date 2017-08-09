@@ -10,6 +10,7 @@ body {
   height: 100%;
 }
 body {
+  font-size: 16px;
   font-family: 'Roboto Condensed', sans-serif;
 }
 img {
@@ -19,6 +20,10 @@ img {
 ul {
   list-style: none;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 .container {
   margin: 0 auto;
   width: 80%;
@@ -27,6 +32,25 @@ ul {
   font-size: 1.1em;
   font-weight: 700;
   color: #0b0f1a;
+}
+.button {
+  display: inline-block;
+  height: 34px;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.4rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+}
+.button--success {
+  color: #fff;
+  background-color: #62bf6e;
 }
 .profile {
   padding: 30px 0;
@@ -82,16 +106,14 @@ ul {
 }
 .details__desc {
   font-size: 0.9em;
-  text-decoration: none;
-  color: inherit;
 }
 .repositories {
-  padding: 16px 0;
+  padding: 16px 0 30px;
 }
 .repository {
   padding: 16px;
   border: 1px solid #d1d5da;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 .repository ~ .repository {
   margin-top: 12px;
@@ -104,4 +126,48 @@ ul {
 .repository__desc {
   font-size: 0.9em;
   color: #6e748e;
+}
+.notes {
+  padding: 24px 0;
+  font-size: 1rem;
+  border-top: 1px solid #e3e7ea;
+}
+.notes .title {
+  margin-bottom: 16px;
+}
+.submit__input {
+  display: block;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 40px;
+  padding: 0.6rem 0.75rem;
+  vertical-align: middle;
+  outline: none;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  font-size: 1rem;
+  transition: all 0.15s ease-in-out;
+}
+.submit__input:focus {
+  height: 64px;
+}
+.submit__buttons {
+  text-align: right;
+}
+.note {
+  margin-bottom: 16px;
+  padding: 16px;
+  color: #0b0f1a;
+  border: 1px solid #c0d3eb;
+  border-radius: 3px;
+}
+.footer {
+  text-align: center;
+  padding: 1.563rem 0;
+  color: #fff;
+  font-weight: 300;
+  background-color: #0b0f1a;
+}
+.footer a {
+  font-weight: 400;
 }

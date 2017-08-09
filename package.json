@@ -5,9 +5,9 @@
   "main": ".eslintrc.js",
   "scripts": {
     "start": "gulp server",
-    "stylus": "stylus src/styl/app.styl -o dist/css/app.css",
+    "stylus": "mkdir dist/css; stylus src/styl/app.styl -o dist/css/app.css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
-    "icons": "svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
+    "icons": "mkdir dist/img; svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
     "serve": "browser-sync start --server \"dist\" --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
     "build:css": "npm run stylus -- --compress && npm run autoprefixer",
     "watch:css": "npm run stylus -- -w",
