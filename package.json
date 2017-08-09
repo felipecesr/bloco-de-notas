@@ -1,0 +1,27 @@
+{
+  "name": "bloco-de-notas",
+  "version": "0.1.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "gulp server",
+    "stylus": "stylus src/styl/app.styl -o dist/css/app.css",
+    "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
+    "icons": "svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
+    "serve": "browser-sync start --server \"dist\" --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
+    "build:css": "npm run stylus -- --compress && npm run autoprefixer",
+    "watch:css": "npm run stylus -- -w",
+    "watch": "parallelshell \"npm run serve\" \"npm run watch:css\""
+  },
+  "author": "Felipe Cesar <felipecesr@gmail.com> (http://felipecesar.com.br/)",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "browser-sync": "^2.18.13",
+    "parallelshell": "^3.0.1",
+    "postcss-cli": "^4.1.0",
+    "stylus": "^0.54.5",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^0.7.2"
+  }
+}
