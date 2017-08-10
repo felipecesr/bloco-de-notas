@@ -4,17 +4,36 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint src/js/**/*.js",
-    "prepush": "npm run lint",
     "stylus": "mkdir dist/css; stylus src/styl/app.styl -o dist/css/app.css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
     "icons": "mkdir dist/img; svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
+    "test": "mocha tests/**/*.spec.js --require babel-register",
+    "test:covarage": "nyc npm test && npm run test:covarage",
+    "lint": "eslint src/js/**/*.js",
+    "prepush": "npm run lint",
     "serve": "browser-sync start --server \"dist\" --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
     "build:css": "npm run stylus -- --compress && npm run autoprefixer",
-    "build:js": "./node_modules/.bin/webpack --colors --progress",
+    "build:js": "webpack --colors --progress",
     "watch:css": "npm run stylus -- -w",
     "watch:js": "npm run build:js -- --watch",
-    "watch": "parallelshell \"npm run serve\" \"npm run watch:css\" \"npm run watch:js\""
+    "watch:tests": "npm test -- --watch",
+    "watch": "parallelshell \"npm run serve\" \"npm run watch:css\" \"npm run watch:js\"",
+    "start": "webpack-dev-server --open"
+  },
+  "eslintIgnore": [
+    "tests/**"
+  ],
+  "nyc": {
+    "functions": 80,
+    "lines": 80,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**"
+    ]
   },
   "author": "Felipe Cesar <felipecesr@gmail.com> (http://felipecesar.com.br/)",
   "license": "MIT",
@@ -22,17 +41,29 @@
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015-native-modules": "^6.9.4",
+    "babel-register": "^6.24.1",
     "browser-sync": "^2.18.13",
+    "chai": "^4.1.1",
     "eslint": "^4.4.1",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0",
     "husky": "^0.14.3",
+    "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.5.0",
+    "node-fetch": "^1.7.2",
+    "nyc": "^11.1.0",
     "parallelshell": "^3.0.1",
     "postcss-cli": "^4.1.0",
+    "sinon": "^3.2.0",
+    "sinon-chai": "^2.12.0",
+    "sinon-stub-promise": "^4.0.0",
     "stylus": "^0.54.5",
     "svg-sprite-generator": "0.0.7",
     "svgo": "^0.7.2",
-    "webpack": "^3.5.2"
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1"
   }
 }
