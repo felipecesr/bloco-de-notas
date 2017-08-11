@@ -4,7 +4,7 @@ const webpack = require('webpack');
 // const nodeENV = process.env.NODE_ENV || 'production';
 
 module.exports = {
-  // devtool: 'source-map',
+  devtool: 'source-map',
   context: path.resolve(__dirname, './src/js'),
   entry: {
     app: './main.js',

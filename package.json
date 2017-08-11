@@ -65,5 +65,8 @@
     "svgo": "^0.7.2",
     "webpack": "^3.5.2",
     "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "firebase": "^4.2.0"
   }
 }

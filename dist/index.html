@@ -9,8 +9,8 @@
 </head>
 <body>
 
-    <form id="search-form">
-        <input type="search" name="user-search" id="user-search">
+    <form class="search" id="search-form">
+        <input class="search__input" type="search" name="user-search" id="user-search" placeholder="Search a username">
     </form>
 
     <div class="profile" id="profile"></div>
@@ -30,21 +30,17 @@
     <div class="notes">
         <div class="container">
 
-            <p class="title">Notes (2)</p>
+            <p class="title">Notes <span id="notes-count"></span></p>
 
-            <ul>
-                <li class="note">
-                    Aqui
-                </li>
-            </ul>
+            <ul id="note-list"></ul>
 
-            <div class="submit">
-                <textarea class="submit__input" placeholder="Write a new note..."></textarea>
+            <form class="submit" id="note-form">
+                <textarea class="submit__input" id="note-text" placeholder="Write a new note..."></textarea>
                 <div class="submit__buttons">
                     <button class="button">Clear</button>
-                    <button class="button button--success">Submit</button>
+                    <button class="button button--success" type="submit">Submit</button>
                 </div>
-            </div>
+            </form>
 
         </div>
     </div>
