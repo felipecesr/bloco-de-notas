@@ -10,6 +10,11 @@ describe('Notes', () => {
     it('should exist render method', () => {
       expect(notes.render).to.exist;
     });
+
+    it('should exist userId property', () => {
+      expect(notes.userId).to.exist;
+    });
+
   });
 
   describe('render methods', () => {

@@ -1,11 +1,12 @@
 class Notes {
-  constructor(data, element) {
+  constructor(data = {}, element) {
     this.data = data;
     this.element = element;
   }
 
   get userId() {
-    return this.data.id;
+    const { id = 'null' } = this.data;
+    return id;
   }
 
   render() {
