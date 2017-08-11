@@ -22,7 +22,9 @@ describe('Repos', () => {
       }
     ];
 
-    const markup = `
+    const minify = str => str.replace(/>\s+|\s+</g, m => m.trim());
+
+    const markup = minify(`
       <li class="repository">
         <p class="repository__title">Advanced-Gulp-WordPress</p>
         <p class="repository__desc">An Advanced Gulp Workflow for WordPress themes.</p>
@@ -31,15 +33,13 @@ describe('Repos', () => {
         <p class="repository__title">bloco-de-notas</p>
         <p class="repository__desc"></p>
       </li>
-    `;
-
-    const minify = str => str.replace(/>\s+|\s+</g, m => m.trim());
+    `);
 
     it('should create and append the markup given a correct data', () => {
       const element = document.createElement('div');
       renderRepos(data, element);
 
-      expect(minify(element.innerHTML)).to.be.eql(minify(markup));
+      expect(minify(element.innerHTML)).to.be.eql(markup);
     });
   });
 
