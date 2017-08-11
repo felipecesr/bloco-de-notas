@@ -7,7 +7,7 @@ const config = {
   databaseURL: 'https://github-notes-79ee0.firebaseio.com',
   projectId: 'github-notes-79ee0',
   storageBucket: '',
-  messagingSenderId: '829320344393'
+  messagingSenderId: '829320344393',
 };
 
 const connection = firebase.initializeApp(config);
