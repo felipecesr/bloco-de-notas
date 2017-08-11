@@ -9,58 +9,21 @@
 </head>
 <body>
 
-    <form>
-        Search Github User: <input type="search" name="usersearch">
+    <form id="search-form">
+        <input type="search" name="user-search" id="user-search">
     </form>
 
-    <div class="profile">
-        <img class="profile__photo" src="http://via.placeholder.com/120x120" alt="Person">
-        <p class="profile__name">Name</p>
-        <p class="profile__username">@username</p>
-    </div>
+    <div class="profile" id="profile"></div>
 
-    <ul class="follow">
-        <li class="follow__item">
-            <span class="follow__item--value">1687</span> Followers
-        </li>
-        <li class="follow__item">
-            <span class="follow__item--value">6</span> Following
-        </li>
-    </ul>
+    <ul class="follow" id="follow"></ul>
 
     <div class="container">
 
-        <ul class="details">
-            <li class="details__item">
-                <svg class="details__icon"><use xlink:href="/img/icons.svg#group"></use></svg>
-                <a href="#" class="details__desc">Company</a>
-            </li>
-            <li class="details__item">
-                <svg class="details__icon"><use xlink:href="/img/icons.svg#place"></use></svg>
-                <a href="#" class="details__desc">Place</a>
-            </li>
-            <li class="details__item">
-                <svg class="details__icon"><use xlink:href="/img/icons.svg#envelope"></use></svg>
-                <a href="mailto:username@github.com" class="details__desc">username@github.com</a>
-            </li>
-            <li class="details__item">
-                <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
-                <a href="#" class="details__desc">Blog</a>
-            </li>
-        </ul>
+        <ul class="details" id="details"></ul>
 
-        <p class="title">Repositories (2)</p>
+        <p class="title" id="repositories-title"></p>
 
-        <ul class="repositories">
-            <li class="repository">
-                <p class="repository__title">Título</p>
-                <p class="repository__desc">Lorem ipsum dolor sit amet.</p>
-            </li>
-            <li class="repository">
-                <p class="repository__title">Título</p>
-                <p class="repository__desc">Lorem ipsum dolor sit amet.</p>
-            </li>
-        </ul>
+        <ul class="repositories" id="repositories"></ul>
 
     </div>
 
@@ -78,7 +41,7 @@
             <div class="submit">
                 <textarea class="submit__input" placeholder="Write a new note..."></textarea>
                 <div class="submit__buttons">
-                    <button class="button">Submit</button>
+                    <button class="button">Clear</button>
                     <button class="button button--success">Submit</button>
                 </div>
             </div>
