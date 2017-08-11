@@ -1,4 +1,5 @@
 function renderDetails(data, element) {
+  const el = element;
   const markup = `
     <li class="details__item">
       <svg class="details__icon"><use xlink:href="/img/icons.svg#group"></use></svg>
@@ -18,7 +19,7 @@ function renderDetails(data, element) {
     </li>
   `;
 
-  element.innerHTML = markup;
+  el.innerHTML = markup;
 }
 
 export default renderDetails;

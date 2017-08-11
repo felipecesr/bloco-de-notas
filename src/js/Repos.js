@@ -1,4 +1,5 @@
 function renderRepos(data, element) {
+  const el = element;
   const markup = data.map(repo => `
     <li class="repository">
       <p class="repository__title">${repo.name}</p>
@@ -6,7 +7,7 @@ function renderRepos(data, element) {
     </li>
   `).join('');
 
-  element.innerHTML = markup;
+  el.innerHTML = markup;
 }
 
 export default renderRepos;

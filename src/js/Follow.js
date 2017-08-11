@@ -1,4 +1,5 @@
 function renderFollow(data, element) {
+  const el = element;
   const markup = `
     <li class="follow__item">
       <span class="follow__item--value">${data.followers}</span> Followers
@@ -8,7 +9,7 @@ function renderFollow(data, element) {
     </li>
   `;
 
-  element.innerHTML = markup;
+  el.innerHTML = markup;
 }
 
 export default renderFollow;

@@ -10,6 +10,7 @@
     "test": "mocha tests/**/*.spec.js --require babel-register",
     "test:covarage": "nyc npm test && npm run test:covarage",
     "lint": "eslint src/js/**/*.js",
+    "prepush": "npm run lint",
     "serve": "browser-sync start --server \"dist\" --files \"dist/css/*.css, dist/js/*.js, **/*.html, !node_modules/**/*.html\"",
     "build:css": "npm run stylus -- --compress && npm run autoprefixer",
     "build:js": "webpack --colors --progress",
