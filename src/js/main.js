@@ -34,7 +34,6 @@ $searchForm.addEventListener('submit', (e) => {
         const notes = new Notes(obj, data, $noteList);
         notes.render();
       });
-
     });
 
   getRepositories($userSearch.value)

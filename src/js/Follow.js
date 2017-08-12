@@ -8,8 +8,6 @@ function renderFollow(data, element) {
       <span class="follow__item--value">${data.following}</span> Following
     </li>
   `;
-
   el.innerHTML = markup;
 }
-
 export default renderFollow;
