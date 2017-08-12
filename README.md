@@ -7,14 +7,18 @@ git clone https://github.com/felipecesr/github-notes.git
 cd github-notes/
 ```
 
-### Installing
+## Install dependencies
 
 ```sh
 npm install
+```
+
+## Serve with hot reload at localhost:8080
+```sh
 npm start
 ```
 
-## Running the tests
+## Run unit tests
 
 ```sh
 npm test
