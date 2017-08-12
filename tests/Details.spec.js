@@ -1,5 +1,6 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
+import minify from '../src/js/minify';
 import renderDetails from '../src/js/Details';
 
 describe('Details', () => {
@@ -15,7 +16,7 @@ describe('Details', () => {
     "email": "felipecesr@gmail.com",
   };
 
-  const markup = `
+  const markup = minify(`
     <li class="details__item">
       <svg class="details__icon"><use xlink:href="/img/icons.svg#group"></use></svg>
       <a href="#" class="details__desc">Company</a>
@@ -32,13 +33,38 @@ describe('Details', () => {
       <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
       <a href="http://felipecesar.com.br" class="details__desc">http://felipecesar.com.br</a>
     </li>
-  `;
+  `);
+
+  const data2 = {
+    "company": null,
+    "blog": "http://felipecesar.com.br",
+    "location": "Ceará, Brasil",
+    "email": null,
+  };
+
+  const markup2 = minify(`
+    <li class="details__item">
+      <svg class="details__icon"><use xlink:href="/img/icons.svg#place"></use></svg>
+      <a href="#" class="details__desc">Ceará, Brasil</a>
+    </li>
+    <li class="details__item">
+      <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
+      <a href="http://felipecesar.com.br" class="details__desc">http://felipecesar.com.br</a>
+    </li>
+  `);
 
   it('should create and append the markup given a correct data', () => {
     const element = document.createElement('div');
     renderDetails(data, element);
 
-    expect(element.innerHTML).to.be.eql(markup);
+    expect(minify(element.innerHTML)).to.be.eql(markup);
+  });
+
+  it('should create and append the markup given an incomplete data', () => {
+    const element = document.createElement('div');
+    renderDetails(data2, element);
+
+    expect(minify(element.innerHTML)).to.be.eql(markup2);
   });
 
 });

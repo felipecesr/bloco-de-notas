@@ -11,38 +11,44 @@ describe('Notes', () => {
       expect(notes.render).to.exist;
     });
 
-    it('should exist userId property', () => {
-      expect(notes.userId).to.exist;
-    });
-
   });
 
   describe('render methods', () => {
 
-    const data = {
-      "login": "felipecesr",
-      "id": 10980841
+    const data = [
+      [
+        '-KrIgDgrqbfiFVcDLm0a',
+        {note: 'Primeiro', username: 'felipecesr'}
+      ],
+      [
+        '-KrIi1zTt-_K6qQkWpwO',
+        {note: 'Segundo', username: 'felipecesr'}
+      ],
+      [
+        '-KrIi1zTt-_K6qQkWpwO',
+        {note: 'Terceiro', username: 'ManoelSilva'}
+      ]
+    ];
+
+    const user = {
+      "login": "felipecesr"
     };
 
-    it('should receive the correct data to filter by id', () => {
-      const notes = new Notes(data);
+    const minify = str => str.replace(/>\s+|\s+</g, m => m.trim());
 
-      expect(notes.userId).to.be.eql(10980841);
+    const markup = minify(`
+      <li class="note">Primeiro <a href="#" class="note__remove" id="-KrIgDgrqbfiFVcDLm0a">Remove</a></li>
+      <li class="note">Segundo <a href="#" class="note__remove" id="-KrIi1zTt-_K6qQkWpwO">Remove</a></li>
+    `);
+
+    it('should create and append the markup given a filtered data', () => {
+      const element = document.createElement('div');
+
+      const notes = new Notes(data, user, element);
+      notes.render();
+
+      expect(minify(element.innerHTML)).to.be.eql(markup);
     });
-
-    // const minify = str => str.replace(/>\s+|\s+</g, m => m.trim());
-
-    // const markup = minify(`
-    //   <li class="note">Primeiro <a href="#" class="remove-note">Remove</a></li>
-    //   <li class="note">Segundo <a href="#" class="remove-note">Remove</a></li>
-    // `);
-
-    // it('should create and append the markup given a correct data', () => {
-    //   const element = document.createElement('div');
-    //   renderNotes(data, element);
-
-    //   expect(minify(element.innerHTML)).to.be.eql(markup);
-    // });
   });
 
 });

@@ -5,6 +5,7 @@ import renderUser from './User';
 import renderRepos from './Repos';
 import renderFollow from './Follow';
 import renderDetails from './Details';
+import Notes from './Notes';
 
 window.db = db;
 
@@ -18,7 +19,6 @@ const $userSearch = document.querySelector('#user-search');
 const $noteForm = document.querySelector('#note-form');
 const $noteText = document.querySelector('#note-text');
 const $noteList = document.querySelector('#note-list');
-const $notesCount = document.querySelector('#notes-count');
 
 $searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -28,6 +28,13 @@ $searchForm.addEventListener('submit', (e) => {
       renderUser(data, $profile);
       renderFollow(data, $follow);
       renderDetails(data, $details);
+
+      db.ref('github-notes').on('value', (res) => {
+        const obj = Object.entries(res.val());
+        const notes = new Notes(obj, data, $noteList);
+        notes.render();
+      });
+
     });
 
   getRepositories($userSearch.value)
@@ -38,19 +45,15 @@ $searchForm.addEventListener('submit', (e) => {
 });
 
 $noteForm.addEventListener('submit', (e) => {
+  const username = document.getElementById('username') || '';
   e.preventDefault();
-  db.ref('github-notes').push($noteText.value);
+  db.ref('github-notes').push({ username: username.textContent, note: $noteText.value });
   $noteText.value = '';
 });
 
-db.ref('github-notes').on('value', (data) => {
-  const obj = Object.entries(data.val());
-  const list = obj.map(n => `<li class="note">${n[1]} <a href="#" id="${n[0]}" class="remove-note">Remove</a></li>`).join('');
-  $notesCount.innerText = `(${obj.length})`;
-  $noteList.innerHTML = list;
-});
-
 $noteList.addEventListener('click', (e) => {
+  e.preventDefault();
+
   const id = e.target.getAttribute('id');
 
   if (id) {

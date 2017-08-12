@@ -4,9 +4,9 @@
   "description": "",
   "main": ".eslintrc.js",
   "scripts": {
-    "stylus": "mkdir dist/css; stylus src/styl/app.styl -o dist/css/app.css",
+    "stylus": "stylus src/styl/app.styl -o dist/css/app.css",
     "autoprefixer": "postcss -u autoprefixer -r dist/css/*",
-    "icons": "mkdir dist/img; svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
+    "icons": "svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
     "test": "mocha tests/**/*.spec.js --require babel-register",
     "test:covarage": "nyc npm test && npm run test:covarage",
     "lint": "eslint src/js/**/*.js",

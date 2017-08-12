@@ -1,5 +1,6 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
+import minify from '../src/js/minify';
 import renderRepos from '../src/js/Repos';
 
 describe('Repos', () => {
@@ -21,8 +22,6 @@ describe('Repos', () => {
         "description": null
       }
     ];
-
-    const minify = str => str.replace(/>\s+|\s+</g, m => m.trim());
 
     const markup = minify(`
       <li class="repository">
