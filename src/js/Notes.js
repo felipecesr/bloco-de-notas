@@ -1,8 +1,9 @@
-class Notes {
-  constructor(data, user, element) {
-    this.data = data;
+import Component from './Component';
+
+class Notes extends Component {
+  constructor(data, element, user) {
+    super(data, element);
     this.user = user;
-    this.element = element;
   }
 
   render() {

@@ -44,7 +44,7 @@ describe('Notes', () => {
     it('should create and append the markup given a filtered data', () => {
       const element = document.createElement('div');
 
-      const notes = new Notes(data, user, element);
+      const notes = new Notes(data, element, user);
       notes.render();
 
       expect(minify(element.innerHTML)).to.be.eql(markup);

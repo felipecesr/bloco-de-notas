@@ -7,6 +7,8 @@ import renderFollow from './Follow';
 import renderDetails from './Details';
 import Notes from './Notes';
 
+import '../styl/app.styl';
+
 window.db = db;
 
 const $profile = document.querySelector('#profile');
@@ -31,7 +33,7 @@ $searchForm.addEventListener('submit', (e) => {
 
       db.ref('github-notes').on('value', (res) => {
         const obj = Object.entries(res.val());
-        const notes = new Notes(obj, data, $noteList);
+        const notes = new Notes(obj, $noteList, data);
         notes.render();
       });
     });
