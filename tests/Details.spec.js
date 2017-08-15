@@ -1,7 +1,7 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
 import minify from '../src/js/minify';
-import renderDetails from '../src/js/Details';
+import renderDetails from '../src/js/components/Details';
 
 describe('Details', () => {
 

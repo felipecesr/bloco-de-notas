@@ -1,26 +1,28 @@
 import searchUser from './search-user';
 import getRepositories from './repositories';
 import db from './plugins/database';
-import renderUser from './User';
-import renderRepos from './Repos';
-import renderFollow from './Follow';
-import renderDetails from './Details';
-import Notes from './Notes';
+import renderUser from './components/User';
+import renderRepos from './components/Repos';
+import renderFollow from './components/Follow';
+import renderDetails from './components/Details';
+import Notes from './components/Notes';
 
 import '../styl/app.styl';
 
 window.db = db;
 
-const $profile = document.querySelector('#profile');
-const $follow = document.querySelector('#follow');
-const $details = document.querySelector('#details');
-const $repositories = document.querySelector('#repositories');
-const $repositoriesTitle = document.querySelector('#repositories-title');
-const $searchForm = document.querySelector('#search-form');
-const $userSearch = document.querySelector('#user-search');
-const $noteForm = document.querySelector('#note-form');
-const $noteText = document.querySelector('#note-text');
-const $noteList = document.querySelector('#note-list');
+const $ = document.querySelector.bind(document);
+
+const $profile = $('#profile');
+const $follow = $('#follow');
+const $details = $('#details');
+const $repositories = $('#repositories');
+const $repositoriesTitle = $('#repositories-title');
+const $searchForm = $('#search-form');
+const $userSearch = $('#user-search');
+const $noteForm = $('#note-form');
+const $noteText = $('#note-text');
+const $noteList = $('#note-list');
 
 $searchForm.addEventListener('submit', (e) => {
   e.preventDefault();

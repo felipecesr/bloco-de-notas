@@ -1,6 +1,6 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
-import renderFollow from '../src/js/Follow';
+import renderFollow from '../src/js/components/Follow';
 
 describe('Follow', () => {
 

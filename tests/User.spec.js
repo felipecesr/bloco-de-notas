@@ -1,6 +1,6 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
-import renderUser from '../src/js/User';
+import renderUser from '../src/js/components/User';
 
 describe('User', () => {
 
