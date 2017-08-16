@@ -5,7 +5,7 @@
   "main": ".eslintrc.js",
   "scripts": {
     "icons": "svgo -f src/img/icons && svg-sprite-generate -d src/img/icons -o dist/img/icons.svg",
-    "test": "mocha tests/**/*.spec.js --require babel-register",
+    "test": "mocha tests/**/*.spec.js --require babel-register --require ./ignore-utils",
     "test:covarage": "nyc npm test && npm run test:covarage",
     "test:watch": "npm test -- --watch",
     "lint": "eslint src/js/**/*.js",
@@ -56,6 +56,7 @@
     "optimize-css-assets-webpack-plugin": "^3.0.0",
     "postcss-cli": "^4.1.0",
     "postcss-loader": "^2.0.6",
+    "require-hacker": "^3.0.0",
     "sinon": "^3.2.0",
     "sinon-chai": "^2.12.0",
     "sinon-stub-promise": "^4.0.0",
@@ -63,7 +64,9 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "svg-sprite-generator": "0.0.7",
+    "svg-sprite-loader": "^3.2.0",
     "svgo": "^0.7.2",
+    "svgo-loader": "^1.2.1",
     "webpack": "^3.5.2",
     "webpack-dev-server": "^2.7.1"
   },

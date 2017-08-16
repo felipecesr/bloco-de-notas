@@ -18,19 +18,19 @@ describe('Details', () => {
 
   const markup = minify(`
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#group"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#group"></use></svg>
       <a href="#" class="details__desc">Company</a>
     </li>
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#place"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#place"></use></svg>
       <a href="#" class="details__desc">Ceará, Brasil</a>
     </li>
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#envelope"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#envelope"></use></svg>
       <a href="mailto:felipecesr@gmail.com" class="details__desc">felipecesr@gmail.com</a>
     </li>
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#home"></use></svg>
       <a href="http://felipecesar.com.br" class="details__desc">http://felipecesar.com.br</a>
     </li>
   `);
@@ -44,11 +44,11 @@ describe('Details', () => {
 
   const markup2 = minify(`
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#place"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#place"></use></svg>
       <a href="#" class="details__desc">Ceará, Brasil</a>
     </li>
     <li class="details__item">
-      <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
+      <svg class="details__icon"><use xlink:href="icons.svg#home"></use></svg>
       <a href="http://felipecesar.com.br" class="details__desc">http://felipecesar.com.br</a>
     </li>
   `);

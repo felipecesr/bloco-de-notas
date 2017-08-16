@@ -3,8 +3,12 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 
-const plugins = [new ExtractTextPlugin('styles.css')];
+const plugins = [
+  new ExtractTextPlugin('styles.css'),
+  new SpriteLoaderPlugin()
+];
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push(new webpack.optimize.ModuleConcatenationPlugin());
@@ -69,6 +73,19 @@ module.exports = {
             { loader: 'stylus-loader', options: { sourceMap: true } },
           ],
         }),
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: 'icons.svg',
+            },
+          },
+          'svgo-loader',
+        ],
       },
     ],
   },
