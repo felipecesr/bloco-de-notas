@@ -1,3 +1,8 @@
+import '../../img/icons/group.svg';
+import '../../img/icons/place.svg';
+import '../../img/icons/envelope.svg';
+import '../../img/icons/home.svg';
+
 function renderDetails(data, element) {
   const el = element;
   let markup = '';
@@ -5,7 +10,7 @@ function renderDetails(data, element) {
   if (data.company) {
     markup += `
       <li class="details__item">
-        <svg class="details__icon"><use xlink:href="/img/icons.svg#group"></use></svg>
+        <svg class="details__icon"><use xlink:href="icons.svg#group"></use></svg>
         <a href="#" class="details__desc">${data.company}</a>
       </li>
     `;
@@ -14,7 +19,7 @@ function renderDetails(data, element) {
   if (data.location) {
     markup += `
       <li class="details__item">
-        <svg class="details__icon"><use xlink:href="/img/icons.svg#place"></use></svg>
+        <svg class="details__icon"><use xlink:href="icons.svg#place"></use></svg>
         <a href="#" class="details__desc">${data.location}</a>
       </li>
     `;
@@ -23,7 +28,7 @@ function renderDetails(data, element) {
   if (data.email) {
     markup += `
       <li class="details__item">
-        <svg class="details__icon"><use xlink:href="/img/icons.svg#envelope"></use></svg>
+        <svg class="details__icon"><use xlink:href="icons.svg#envelope"></use></svg>
         <a href="mailto:${data.email}" class="details__desc">${data.email}</a>
       </li>
     `;
@@ -32,7 +37,7 @@ function renderDetails(data, element) {
   if (data.blog) {
     markup += `
       <li class="details__item">
-        <svg class="details__icon"><use xlink:href="/img/icons.svg#home"></use></svg>
+        <svg class="details__icon"><use xlink:href="icons.svg#home"></use></svg>
         <a href="${data.blog}" class="details__desc">${data.blog}</a>
       </li>
     `;
