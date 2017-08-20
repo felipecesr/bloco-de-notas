@@ -1,7 +1,7 @@
 class Component {
-  constructor(data, element) {
-    this.data = data;
+  constructor(element, data) {
     this.element = element;
+    this.data = data;
   }
 
   static render() {

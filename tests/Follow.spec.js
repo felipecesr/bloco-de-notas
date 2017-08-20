@@ -1,32 +1,37 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
-import renderFollow from '../src/js/components/Follow';
+import Follow from '../src/js/components/Follow';
 
 describe('Follow', () => {
 
-  it('should exist', () => {
-    expect(renderFollow).to.exist;
+  describe('smoke tests', () => {
+    it('should exist', () => {
+      const follow = new Follow();
+      expect(follow.render).to.exist;
+    });
   });
 
-  const data = {
-    "followers": 3,
-    "following": 13
-  };
+  describe('render tests', () => {
+    const data = {
+      "followers": 3,
+      "following": 13
+    };
 
-  const markup = `
-    <li class="follow__item">
-      <span class="follow__item--value">3</span> Followers
-    </li>
-    <li class="follow__item">
-      <span class="follow__item--value">13</span> Following
-    </li>
-  `;
+    const markup = `
+      <li class="follow__item">
+        <span class="follow__item--value">3</span> Followers
+      </li>
+      <li class="follow__item">
+        <span class="follow__item--value">13</span> Following
+      </li>
+    `;
 
-  it('should create and append the markup given a correct data', () => {
-    const element = document.createElement('div');
-    renderFollow(data, element);
+    it('should create and append the markup given a correct data', () => {
+      const element = document.createElement('div');
+      const follow = new Follow(element, data);
+      follow.render();
 
-    expect(element.innerHTML).to.be.eql(markup);
+      expect(element.innerHTML).to.be.eql(markup);
+    });
   });
-
 });

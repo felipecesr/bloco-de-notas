@@ -64,7 +64,7 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "svg-sprite-generator": "0.0.7",
-    "svg-sprite-loader": "^3.2.0",
+    "svg-sprite-loader": "^3.2.2",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
     "webpack": "^3.5.2",

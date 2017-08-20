@@ -1,8 +1,8 @@
 import Component from './Component';
 
 class Notes extends Component {
-  constructor(data, element, user) {
-    super(data, element);
+  constructor(element, data, user) {
+    super(element, data);
     this.user = user;
   }
 

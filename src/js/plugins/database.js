@@ -6,7 +6,7 @@ const config = {
   authDomain: 'github-notes-79ee0.firebaseapp.com',
   databaseURL: 'https://github-notes-79ee0.firebaseio.com',
   projectId: 'github-notes-79ee0',
-  storageBucket: '',
+  storageBucket: 'github-notes-79ee0.appspot.com',
   messagingSenderId: '829320344393',
 };
 

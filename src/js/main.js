@@ -1,18 +1,25 @@
 import searchUser from './search-user';
 import getRepositories from './repositories';
 import db from './plugins/database';
-import renderUser from './components/User';
-import renderRepos from './components/Repos';
-import renderFollow from './components/Follow';
-import renderDetails from './components/Details';
+
+// components
+import User from './components/User';
+import Follow from './components/Follow';
+import Details from './components/Details';
+import Repos from './components/Repos';
 import Notes from './components/Notes';
 
+// icons
+import '../img/icons/search.svg';
+
+// style
 import '../styl/app.styl';
 
 window.db = db;
 
 const $ = document.querySelector.bind(document);
 
+// dom elements
 const $profile = $('#profile');
 const $follow = $('#follow');
 const $details = $('#details');
@@ -29,13 +36,18 @@ $searchForm.addEventListener('submit', (e) => {
 
   searchUser($userSearch.value)
     .then((data) => {
-      renderUser(data, $profile);
-      renderFollow(data, $follow);
-      renderDetails(data, $details);
+      const user = new User($profile, data);
+      user.render();
+
+      const follow = new Follow($follow, data);
+      follow.render();
+
+      const details = new Details($details, data);
+      details.render();
 
       db.ref('github-notes').on('value', (res) => {
         const obj = Object.entries(res.val());
-        const notes = new Notes(obj, $noteList, data);
+        const notes = new Notes($noteList, obj, data);
         notes.render();
       });
     });
@@ -43,7 +55,8 @@ $searchForm.addEventListener('submit', (e) => {
   getRepositories($userSearch.value)
     .then((data) => {
       $repositoriesTitle.textContent = `Repositories (${data.length})`;
-      renderRepos(data, $repositories);
+      const repos = new Repos($repositories, data);
+      repos.render();
     });
 });
 
@@ -63,3 +76,11 @@ $noteList.addEventListener('click', (e) => {
     db.ref(`github-notes/${id}`).remove();
   }
 });
+
+window.onscroll = () => {
+  if (window.pageYOffset === 0) {
+    $searchForm.className = 'search';
+  } else {
+    $searchForm.className = 'search search--shadow';
+  }
+};

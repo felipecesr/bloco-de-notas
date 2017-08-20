@@ -1,17 +1,18 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
-import minify from '../src/js/minify';
-import renderRepos from '../src/js/components/Repos';
+import minify from '../src/js/helpers/minify';
+import Repos from '../src/js/components/Repos';
 
 describe('Repos', () => {
 
   describe('smoke tests', () => {
     it('should exist', () => {
-      expect(renderRepos).to.exist;
+      const repos = new Repos();
+      expect(repos.render).to.exist;
     });
   });
 
-  describe('render methods', () => {
+  describe('render tests', () => {
     const data = [
       {
         "name": "Advanced-Gulp-WordPress",
@@ -36,7 +37,8 @@ describe('Repos', () => {
 
     it('should create and append the markup given a correct data', () => {
       const element = document.createElement('div');
-      renderRepos(data, element);
+      const repos = new Repos(element, data);
+      repos.render();
 
       expect(minify(element.innerHTML)).to.be.eql(markup);
     });
