@@ -1,28 +1,23 @@
 import searchUser from './search-user';
 import getRepositories from './repositories';
-import db from './plugins/database';
+import connection from './plugins/connection';
 
 // components
-import User from './components/User';
-import Follow from './components/Follow';
-import Details from './components/Details';
+import Start from './components/Start';
 import Repos from './components/Repos';
 import Notes from './components/Notes';
 
-// icons
+// assets
+import '../styl/app.styl';
 import '../img/icons/search.svg';
 
-// style
-import '../styl/app.styl';
-
-window.db = db;
+const db = connection.database();
 
 const $ = document.querySelector.bind(document);
 
 // dom elements
-const $profile = $('#profile');
-const $follow = $('#follow');
-const $details = $('#details');
+const $app = $('#app');
+
 const $repositories = $('#repositories');
 const $repositoriesTitle = $('#repositories-title');
 const $searchForm = $('#search-form');
@@ -45,27 +40,14 @@ $searchForm.addEventListener('submit', (e) => {
 
   searchUser(username)
     .then((data) => {
-      const user = new User($profile, data);
-      user.render();
-
-      const follow = new Follow($follow, data);
-      follow.render();
-
-      const details = new Details($details, data);
-      details.render();
+      const start = new Start($app, data);
+      start.init();
 
       db.ref('github-notes').on('value', (res) => {
         const obj = Object.entries(res.val());
         const notes = new Notes($noteList, obj, data);
         notes.render();
       });
-    });
-
-  getRepositories(username)
-    .then((data) => {
-      $repositoriesTitle.textContent = `Repositories (${data.length})`;
-      const repos = new Repos($repositories, data);
-      repos.render();
     });
 });
 
@@ -126,3 +108,18 @@ $tabs.addEventListener('click', (e) => {
   // show our panel
   tabPan.setAttribute('aria-hidden', 'false');
 });
+
+// fetch repositories
+function checkRepos() {
+  if (username && !$repositories.innerHTML) {
+    getRepositories(username)
+      .then((data) => {
+        const repos = new Repos($repositories, data);
+        repos.render();
+      });
+
+    $repositoriesTitle.removeEventListener('click', checkRepos);
+  }
+}
+
+$repositoriesTitle.addEventListener('click', checkRepos);
