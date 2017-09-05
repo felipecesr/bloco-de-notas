@@ -1,0 +1,30 @@
+.tabs
+  border-bottom 1px solid #e3e7ea
+
+  li
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #bbb;
+    border: 1px solid transparent;
+
+    &[aria-selected='true']
+      position relative
+      color #24292e
+      border-bottom #fff
+
+      &:before
+        background-color #e36209
+        left -1px
+        right -1px
+        bottom -1px
+        content ''
+        display block
+        height 2px
+        position absolute
+        transition 0.1s ease-in-out
+
+div[aria-hidden='true']
+  display none

@@ -30,11 +30,20 @@ const $userSearch = $('#user-search');
 const $noteForm = $('#note-form');
 const $noteText = $('#note-text');
 const $noteList = $('#note-list');
+const $tabs = $('.tabs');
+const $tabItems = document.querySelectorAll('li[role="tab"]');
+const $tabPanels = document.querySelectorAll('div[role="tabpanel"]');
+
+let username;
 
 $searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  searchUser($userSearch.value)
+  username = $userSearch.value;
+
+  $userSearch.blur();
+
+  searchUser(username)
     .then((data) => {
       const user = new User($profile, data);
       user.render();
@@ -52,7 +61,7 @@ $searchForm.addEventListener('submit', (e) => {
       });
     });
 
-  getRepositories($userSearch.value)
+  getRepositories(username)
     .then((data) => {
       $repositoriesTitle.textContent = `Repositories (${data.length})`;
       const repos = new Repos($repositories, data);
@@ -61,9 +70,8 @@ $searchForm.addEventListener('submit', (e) => {
 });
 
 $noteForm.addEventListener('submit', (e) => {
-  const username = document.getElementById('username') || '';
   e.preventDefault();
-  db.ref('github-notes').push({ username: username.textContent, note: $noteText.value });
+  db.ref('github-notes').push({ username, note: $noteText.value });
   $noteText.value = '';
 });
 
@@ -84,3 +92,37 @@ window.onscroll = () => {
     $searchForm.className = 'search search--shadow';
   }
 };
+
+$userSearch.addEventListener('focus', () => {
+  document.documentElement.classList.add('search--active');
+});
+
+$userSearch.addEventListener('blur', () => {
+  document.documentElement.classList.remove('search--active');
+});
+
+// select tabs
+$tabs.addEventListener('click', (e) => {
+  const tabsTotal = $tabItems.length;
+
+  // deselect all the tabs
+  for (let i = 0; i < tabsTotal; i += 1) {
+    $tabItems[i].setAttribute('aria-selected', 'false');
+  }
+
+  // select this tab
+  e.target.setAttribute('aria-selected', 'true');
+
+  // find out what tab panel this tab controls
+  const panId = e.target.getAttribute('aria-controls');
+
+  const tabPan = $(`#${panId}`);
+
+  // hide all the panels
+  for (let i = 0; i < $tabPanels.length; i += 1) {
+    $tabPanels[i].setAttribute('aria-hidden', 'true');
+  }
+
+  // show our panel
+  tabPan.setAttribute('aria-hidden', 'false');
+});
