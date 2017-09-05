@@ -1,3 +1,4 @@
 dist/*.js
 tests/*.js
+webpack/*.js
 webpack.config.js
