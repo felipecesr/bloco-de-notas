@@ -1,5 +1,5 @@
 {
-  "name": "bloco-de-notas",
+  "name": "github-notes",
   "version": "0.1.0",
   "description": "",
   "main": ".eslintrc.js",
@@ -10,13 +10,9 @@
     "test:watch": "npm test -- --watch",
     "lint": "eslint src/js/**/*.js",
     "prepush": "npm run lint",
-    "dev": "webpack --colors --progress",
-    "prod": "cross-env NODE_ENV=production webpack --colors --progress",
-    "start": "webpack-dev-server --open --inline"
+    "dev": "webpack-dev-server --open --inline",
+    "build": "cross-env NODE_ENV=production webpack --colors --progress"
   },
-  "eslintIgnore": [
-    "tests/**"
-  ],
   "nyc": {
     "functions": 80,
     "lines": 80,

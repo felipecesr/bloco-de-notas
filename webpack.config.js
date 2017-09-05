@@ -35,7 +35,10 @@ if (process.env.NODE_ENV === 'production') {
     canPrint:	true
   }));
 
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    output: {comments: false},
+  }));
 } else {
   plugins.push(
     new HtmlWebpackPlugin({
