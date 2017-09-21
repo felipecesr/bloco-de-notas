@@ -2,9 +2,9 @@ import getRepositories from '../repositories';
 
 // components
 import Component from './Component';
-import User from './User';
-import Follow from './Follow';
-import Details from './Details';
+import user from './user';
+import follow from './follow';
+import details from './details';
 import Tabs from './Tabs';
 import Panels from './Panels';
 import Notes from './Notes';
@@ -13,11 +13,9 @@ import Repos from './Repos';
 class Start extends Component {
   render() {
     const markup = `
-      <div class="profile" id="profile"></div>
-      <ul class="follow" id="follow"></ul>
-      <div class="container">
-        <ul class="details" id="details"></ul>
-      </div>
+      ${user(this.data)}
+      ${follow(this.data)}
+      ${details(this.data)}
       <ul class="tabs" id="tabs" role="tablist"></ul>
       <span id="panels"></panels>
     `;
@@ -28,20 +26,8 @@ class Start extends Component {
   init(username) {
     this.render();
 
-    const $user = this.element.querySelector('#profile');
-    const $follow = this.element.querySelector('#follow');
-    const $details = this.element.querySelector('#details');
     const $tabs = this.element.querySelector('#tabs');
     const $panels = this.element.querySelector('#panels');
-
-    const user = new User($user, this.data);
-    user.render();
-
-    const follow = new Follow($follow, this.data);
-    follow.render();
-
-    const details = new Details($details, this.data);
-    details.render();
 
     const tabs = new Tabs($tabs, this.data);
     tabs.render();

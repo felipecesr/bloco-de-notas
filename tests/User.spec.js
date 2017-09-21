@@ -1,15 +1,9 @@
 import 'jsdom-global/register';
 import { expect } from 'chai';
-import User from '../src/js/components/User';
+import minify from '../src/js/helpers/minify';
+import user from '../src/js/components/user';
 
 describe('User', () => {
-
-  describe('smoke tests', () => {
-    it('should exist a render method', () => {
-      const user = new User();
-      expect(user.render).to.exist;
-    });
-  });
 
   describe('render tests', () => {
     const data = {
@@ -18,18 +12,20 @@ describe('User', () => {
       "name": "Felipe César"
     };
 
-    const markup = `
-      <img class="profile__photo" src="https://avatars0.githubusercontent.com/u/10980841?v=4" alt="Felipe César">
-      <p class="profile__name">Felipe César</p>
-      <p class="profile__username" id="username">felipecesr</p>
-    `;
+    const markup = minify(`
+      <div class="profile" id="profile">
+        <img class="profile__photo" src="https://avatars0.githubusercontent.com/u/10980841?v=4" alt="Felipe César">
+        <p class="profile__name">Felipe César</p>
+        <p class="profile__username" id="username">felipecesr</p>
+      </div>
+    `);
 
-    it('should create and append the markup given a correct data', () => {
-      const element = document.createElement('div');
-      const user = new User(element, data);
-      user.render();
+    it('should create and return the markup given a correct data', () => {
+      let el = user(data);
 
-      expect(element.innerHTML).to.be.eql(markup);
+      el = minify(el);
+
+      expect(el).to.be.eql(markup);
     });
   });
 });

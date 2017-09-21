@@ -1,15 +1,13 @@
-import Component from './Component';
+const user = (data) => {
+  const markup = `
+    <div class="profile" id="profile">
+      <img class="profile__photo" src="${data.avatar_url}" alt="${data.name}">
+      <p class="profile__name">${data.name}</p>
+      <p class="profile__username" id="username">${data.login}</p>
+    </div>
+  `;
 
-class User extends Component {
-  render() {
-    const markup = `
-      <img class="profile__photo" src="${this.data.avatar_url}" alt="${this.data.name}">
-      <p class="profile__name">${this.data.name}</p>
-      <p class="profile__username" id="username">${this.data.login}</p>
-    `;
+  return markup;
+};
 
-    this.element.innerHTML = markup;
-  }
-}
-
-export default User;
+export default user;

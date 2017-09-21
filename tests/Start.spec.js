@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import minify from '../src/js/helpers/minify';
 import Start from '../src/js/components/Start';
 
-describe('Init', () => {
+describe.skip('Start', () => {
   let start;
 
   beforeEach(() => start = new Start());
@@ -18,7 +18,7 @@ describe('Init', () => {
     });
   });
 
-  describe.skip('render tests', () => {
+  describe('render tests', () => {
     const data = {
       "login": "felipecesr",
       "avatar_url": "https://avatars0.githubusercontent.com/u/10980841?v=4",
@@ -32,10 +32,30 @@ describe('Init', () => {
     };
 
     const markup = minify(`
-      <div class="profile" id="profile"></div>
-      <ul class="follow" id="follow"></ul>
+      <div class="profile" id="profile">
+        <img class="profile__photo" src="https://avatars0.githubusercontent.com/u/10980841?v=4" alt="Felipe César">
+        <p class="profile__name">Felipe César</p>
+        <p class="profile__username" id="username">felipecesr</p>
+      </div>
+      <ul class="follow" id="follow">
+        <li class="follow__item">
+          <span class="follow__item--value">3</span> Followers
+        </li>
+        <li class="follow__item">
+          <span class="follow__item--value">13</span> Following
+        </li>
+      </ul>
       <div class="container">
-        <ul class="details" id="details"></ul>
+        <ul class="details" id="details">
+          <li class="details__item">
+            <svg class="details__icon"><use xlink:href="icons.svg#place"></use></svg>
+            <a href="#" class="details__desc">Ceará, Brasil</a>
+          </li>
+          <li class="details__item">
+            <svg class="details__icon"><use xlink:href="icons.svg#home"></use></svg>
+            <a href="http://felipecesar.com.br" class="details__desc">http://felipecesar.com.br</a>
+          </li>
+        </ul>
       </div>
     `);
 
@@ -55,7 +75,6 @@ describe('Init', () => {
       `);
 
       start.render();
-      start.init();
 
       const profile = element.querySelector('#profile');
 
@@ -73,7 +92,6 @@ describe('Init', () => {
       `);
 
       start.render();
-      start.init();
 
       const follow = element.querySelector('#follow');
 
@@ -93,7 +111,6 @@ describe('Init', () => {
       `);
 
       start.render();
-      start.init();
 
       const details = element.querySelector('#details');
 
