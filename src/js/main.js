@@ -42,9 +42,9 @@ window.onscroll = () => {
 };
 
 $userSearch.addEventListener('focus', () => {
-  document.documentElement.classList.add('search--active');
+  document.documentElement.classList.add('shadow--active');
 });
 
 $userSearch.addEventListener('blur', () => {
-  document.documentElement.classList.remove('search--active');
+  document.documentElement.classList.remove('shadow--active');
 });
