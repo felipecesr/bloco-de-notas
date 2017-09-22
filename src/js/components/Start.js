@@ -5,8 +5,6 @@ import Component from './Component';
 import user from './user';
 import follow from './follow';
 import details from './details';
-import Tabs from './Tabs';
-import Panels from './Panels';
 import Notes from './Notes';
 import Repos from './Repos';
 
@@ -16,8 +14,30 @@ class Start extends Component {
       ${user(this.data)}
       ${follow(this.data)}
       ${details(this.data)}
-      <ul class="tabs" id="tabs" role="tablist"></ul>
-      <span id="panels"></panels>
+      <ul class="tabs" id="tabs" role="tablist">
+        <li class="tabs__item" id="tab-notes" aria-controls="panel-notes" aria-selected="true" role="tab">Notes</li><!--
+        --><li class="tabs__item" id="repositories-title" aria-controls="panel-repos" aria-selected="false" role="tab">Repositories</li>
+      </ul>
+      <span id="panels">
+        <div id="panel-notes" class="panel" aria-labelledby="tab-notes" aria-hidden="false" role="tabpanel">
+          <div class="notes">
+            <div class="container">
+              <form class="submit" id="note-form">
+                <textarea class="submit__input" id="note-text" placeholder="Write a new note..."></textarea>
+                <div class="submit__buttons">
+                  <button class="button button--success" type="submit">Submit</button>
+                </div>
+              </form>
+              <ul id="note-list"></ul>
+            </div>
+          </div>
+        </div>
+        <div id="panel-repos" class="panel" aria-labelledby="repositories-title" aria-hidden="true" role="tabpanel">
+          <div class="container">
+            <ul class="repositories" id="repositories"></ul>
+          </div>
+        </div>
+      </span>
     `;
 
     this.element.innerHTML = markup;
@@ -28,12 +48,6 @@ class Start extends Component {
 
     const $tabs = this.element.querySelector('#tabs');
     const $panels = this.element.querySelector('#panels');
-
-    const tabs = new Tabs($tabs, this.data);
-    tabs.render();
-
-    const panels = new Panels($panels, this.data);
-    panels.render();
 
     // add listeners
 
