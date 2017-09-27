@@ -1,4 +1,5 @@
 import getRepositories from '../repositories';
+import connection from '../plugins/connection';
 
 // components
 import Component from './Component';
@@ -7,6 +8,8 @@ import follow from './follow';
 import details from './details';
 import Notes from './Notes';
 import Repos from './Repos';
+
+const db = connection.database();
 
 class Start extends Component {
   render() {
@@ -58,7 +61,7 @@ class Start extends Component {
 
     $noteForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      window.db.ref('github-notes').push({ username, note: $noteText.value });
+      db.ref('github-notes').push({ username, note: $noteText.value });
       $noteText.value = '';
     });
 
@@ -68,7 +71,7 @@ class Start extends Component {
       const id = e.target.getAttribute('id');
 
       if (id) {
-        window.db.ref(`github-notes/${id}`).remove();
+        db.ref(`github-notes/${id}`).remove();
       }
     });
 
@@ -120,7 +123,7 @@ class Start extends Component {
 
     $repositoriesTitle.addEventListener('click', checkRepos);
 
-    window.db.ref('github-notes').on('value', (res) => {
+    db.ref('github-notes').on('value', (res) => {
       const obj = Object.entries(res.val());
       const notes = new Notes($noteList, obj, this.data);
       notes.render();

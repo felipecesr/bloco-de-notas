@@ -1,14 +1,11 @@
 import searchUser from './search-user';
-import connection from './plugins/connection';
 
 // components
-import Start from './components/Start';
+// import Start from './components/Start';
 
 // assets
 import '../styl/app.styl';
 import '../img/icons/search.svg';
-
-window.db = connection.database();
 
 const $ = document.querySelector.bind(document);
 
@@ -28,8 +25,12 @@ $searchForm.addEventListener('submit', (e) => {
 
   searchUser(username)
     .then((data) => {
-      const start = new Start($app, data);
-      start.init(username);
+      import(/* webpackChunkName: 'Start' */ './components/Start').then(module => {
+        const Start = module.default;
+
+        const start = new Start($app, data);
+        start.init(username);
+      });
     });
 });
 
