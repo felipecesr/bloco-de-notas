@@ -7,7 +7,7 @@ import user from './user';
 import follow from './follow';
 import details from './details';
 import Notes from './Notes';
-import Repos from './Repos';
+// import Repos from './Repos';
 
 const db = connection.database();
 
@@ -113,8 +113,12 @@ class Start extends Component {
       if (username && !$repositories.innerHTML) {
         getRepositories(username)
           .then((data) => {
-            const repos = new Repos($repositories, data);
-            repos.render();
+            import(/* webpackChunkName: 'Repos' */ './Repos').then(module => {
+              const Repos = module.default;
+
+              const repos = new Repos($repositories, data);
+              repos.render();
+            });
           });
 
         $repositoriesTitle.removeEventListener('click', checkRepos);
