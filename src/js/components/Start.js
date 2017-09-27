@@ -113,9 +113,8 @@ class Start extends Component {
       if (username && !$repositories.innerHTML) {
         getRepositories(username)
           .then((data) => {
-            import(/* webpackChunkName: 'Repos' */ './Repos').then(module => {
+            import(/* webpackChunkName: 'Repos' */ './Repos').then((module) => {
               const Repos = module.default;
-
               const repos = new Repos($repositories, data);
               repos.render();
             });

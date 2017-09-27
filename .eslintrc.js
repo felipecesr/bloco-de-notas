@@ -4,5 +4,9 @@ module.exports = {
     "fetch": true,
     "document": true,
     "window": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "allowImportExportEverywhere": true
   }
 };

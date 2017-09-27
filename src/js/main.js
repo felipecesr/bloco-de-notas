@@ -25,9 +25,8 @@ $searchForm.addEventListener('submit', (e) => {
 
   searchUser(username)
     .then((data) => {
-      import(/* webpackChunkName: 'Start' */ './components/Start').then(module => {
+      import(/* webpackChunkName: 'Start' */ './components/Start').then((module) => {
         const Start = module.default;
-
         const start = new Start($app, data);
         start.init(username);
       });
