@@ -10,8 +10,8 @@
     "test:watch": "npm test -- --watch",
     "lint": "eslint src/js/**/*.js",
     "prepush": "npm run lint",
-    "dev": "webpack-dev-server --open --inline",
-    "build": "cross-env NODE_ENV=production webpack --colors --progress"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot --config webpack/dev.config.js",
+    "build": "cross-env NODE_ENV=production webpack --colors --progress --config webpack/prod.config.js"
   },
   "nyc": {
     "functions": 80,
@@ -62,11 +62,12 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
     "svg-sprite-generator": "0.0.7",
-    "svg-sprite-loader": "^3.2.2",
+    "svg-sprite-loader": "^3.2.5",
     "svgo": "^0.7.2",
     "svgo-loader": "^1.2.1",
     "webpack": "^3.5.2",
-    "webpack-dev-server": "^2.7.1"
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "firebase": "^4.2.0"

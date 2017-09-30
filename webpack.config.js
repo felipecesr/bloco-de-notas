@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
         removeAll: true
       }
     },
-    canPrint:	true
+    canPrint: true
   }));
 
   plugins.push(new webpack.optimize.UglifyJsPlugin({

@@ -1,5 +1,5 @@
 import getRepositories from '../repositories';
-import connection from '../plugins/connection';
+import connection from '../services/connection';
 
 // components
 import Component from './Component';

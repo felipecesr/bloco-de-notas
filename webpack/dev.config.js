@@ -1,15 +1,35 @@
 const merge = require('webpack-merge');
 const baseConfig = require('./base.config.js');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(baseConfig, {
   devtool: 'source-map',
+
+  module: {
+    rules: [{
+      test: /\.styl$/,
+      use: [
+        { loader: 'style-loader' },
+        {
+          loader: 'css-loader',
+          options: { sourceMap: true }
+        },
+        {
+          loader: 'postcss-loader',
+          options: { sourceMap: true }
+        },
+        {
+          loader: 'stylus-loader',
+          options: { sourceMap: true }
+        }
+      ]
+    }]
+  },
+
   plugins: [
-    new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       hash: true,
-      template: './index.html',
+      template: './src/index.html',
     })
   ]
 });

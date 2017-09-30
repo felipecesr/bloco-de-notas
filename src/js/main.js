@@ -1,11 +1,8 @@
 import searchUser from './search-user';
 
-// components
-// import Start from './components/Start';
-
 // assets
 import '../styl/app.styl';
-import '../img/icons/search.svg';
+// import '../img/icons/search.svg';
 
 const $ = document.querySelector.bind(document);
 
