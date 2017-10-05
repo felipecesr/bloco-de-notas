@@ -2,7 +2,7 @@ import searchUser from './search-user';
 
 // assets
 import '../styl/app.styl';
-// import '../img/icons/search.svg';
+import '../img/icons/search.svg';
 
 const $ = document.querySelector.bind(document);
 

@@ -1,7 +1,7 @@
-// import '../../img/icons/group.svg';
-// import '../../img/icons/place.svg';
-// import '../../img/icons/envelope.svg';
-// import '../../img/icons/home.svg';
+import '../../img/icons/group.svg';
+import '../../img/icons/place.svg';
+import '../../img/icons/envelope.svg';
+import '../../img/icons/home.svg';
 
 const details = (data) => {
   let markup = '<div class="container"><ul class="details" id="details">';

@@ -14,7 +14,7 @@ module.exports = merge(baseConfig, {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.styl$/,
         use: ExtractTextPlugin.extract({
@@ -22,7 +22,7 @@ module.exports = merge(baseConfig, {
           use: [
             { loader: 'css-loader' },
             { loader: 'postcss-loader' },
-            { loader: 'stylus-loader' },
+            { loader: 'stylus-loader' }
           ],
         }),
       }
@@ -30,6 +30,7 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
+    new ExtractTextPlugin('styles.css'),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
       hash: true,
@@ -51,8 +52,7 @@ module.exports = merge(baseConfig, {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
-      output: {comments: false},
-    }),
-    new ExtractTextPlugin('styles.css')
+      output: {comments: false}
+    })
   ],
 });
